@@ -6,13 +6,14 @@ public class OptLenOfRepeatingSubarr {
 		int ans = 0;
 		int[][] memo = new int[2][num2.length + 1];
 		for(int i = num1.length-1 ; i >= 0; i-- ) {
-            for(int j = num2.length-1 ; j >= 0; j-- ) {
-                if (num1[i] == num2[j]) {
-                    memo[i%2][j] = memo[(i+1)%2][j+1] + 1;
-                    if (ans < memo[i%2][j]) ans = memo[i%2][j];
-                }
-            }
-     }
+		    Arrays.fill(memo[i%2], 0);	
+		    for(int j = num2.length-1 ; j >= 0; j-- ) {
+			if (num1[i] == num2[j]) {
+			    memo[i%2][j] = memo[(i+1)%2][j+1] + 1;
+			    if (ans < memo[i%2][j]) ans = memo[i%2][j];
+			}
+            	    }
+     		}
 
 		return ans;
 	}
